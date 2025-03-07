@@ -1,0 +1,27 @@
+<%- include("partials/header") %>
+
+<%- include("partials/newDirDialog") %>
+<div>
+  <% if (locals.directory) { %>
+  <% if (locals.directory.parentDirectoryId) {%>
+  <a href="/directory/<%= locals.directory.parentDirectoryId %>">Up</a>
+  <% } %>
+  <button id="newDirBtn">New Folder</button>
+  <p>:// <%= locals.directory.name %></p>
+  <p>Owner: <%= locals.currentUser.username %></p>
+  <% locals.directory.subDirectories.forEach(dir => { %>
+  <a href="/directory/<%= dir.id %>"><%= dir.name %></a>
+  <%})%>
+  <% locals.directory.files.forEach(file => { %>
+  <p><%= file.name %></p>
+  <%})%>
+  <%}%>
+</div>
+
+<script>
+    const newDirBtn = document.querySelector("#newDirBtn");
+    const newDirDialog = document.querySelector("#newDirDialog");
+    newDirBtn.addEventListener("click", () =>{
+        newDirDialog.showModal();
+    })
+</script>

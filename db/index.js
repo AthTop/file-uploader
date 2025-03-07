@@ -1,6 +1,9 @@
 const userQueries = require("./user");
-const sessionQuery = require("./sessionStore");
+const prismaSessionStore = require("./sessionStore");
+const directoryQueries = require("./directory");
+
 module.exports = {
+  prismaSessionStore,
   ...userQueries,
-  ...sessionQuery,
+  ...directoryQueries,
 };

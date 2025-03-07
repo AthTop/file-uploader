@@ -2,6 +2,6 @@
 
 <% if(locals.currentUser) { %>
 <div class="app-container">
-  App will go here
+  <a href="/directory/<%= locals.currentUser.directories[0].id %>">Go to root directory of <%= locals.currentUser.username %></a>
 </div>
 <% } %>

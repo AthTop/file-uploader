@@ -5,6 +5,9 @@ const getUserById = async (id) => {
     where: {
       id: id,
     },
+    include: {
+      directories: true,
+    },
   });
   return user;
 };
