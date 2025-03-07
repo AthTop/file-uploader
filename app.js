@@ -8,6 +8,7 @@ const indexRoute = require("./routes/index");
 const successRoute = require("./routes/success");
 const loginRoute = require("./routes/login");
 const logoutRoute = require("./routes/logout");
+const uploadRoute = require("./routes/upload");
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use("/register", registerRoute);
 app.use("/success", successRoute);
 app.use("/login", loginRoute);
 app.use("/logout", logoutRoute);
+app.use("/upload", uploadRoute);
 app.use("/", indexRoute);
 
 const PORT = process.env.PORT || 3000;
