@@ -1,0 +1,21 @@
+<div class="nav">
+  <a href="/" class="logo"><%= locals.siteTitle %></a>
+  <ul>
+    <a href="/">
+      <li>Home</li>
+    </a>
+    <% if(!locals.currentUser) { %>
+    <a href="/register">
+      <li>Register</li>
+    </a>
+    <% } %>
+  </ul>
+  <ul>
+    <% if(!locals.currentUser) { %>
+    <a href="/login">Login</a>
+    <% } else { %>
+    <p>Hi, <%= locals.currentUser.username %>!</p>
+    <a href="/logout">Logout</a>
+    <% } %>
+  </ul>
+</div>

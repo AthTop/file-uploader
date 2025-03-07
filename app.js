@@ -1,9 +1,13 @@
 require("dotenv").config();
 const { prismaSessionStore } = require("./db");
 const express = require("express");
-const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
+const registerRoute = require("./routes/register");
+const indexRoute = require("./routes/index");
+const successRoute = require("./routes/success");
+const loginRoute = require("./routes/login");
+const logoutRoute = require("./routes/logout");
 
 const app = express();
 
@@ -31,8 +35,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Middleware
+app.use((req, res, next) => {
+  res.locals.siteTitle = "Fileupload";
+  res.locals.currentUser = req.user;
+  next();
+});
 
 // Routes
+app.use("/register", registerRoute);
+app.use("/success", successRoute);
+app.use("/login", loginRoute);
+app.use("/logout", logoutRoute);
+app.use("/", indexRoute);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => `Express server running on ${PORT}`);
+app.listen(PORT, () => console.log(`Express server running on ${PORT}`));

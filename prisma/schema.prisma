@@ -13,6 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id            Int         @id @default(autoincrement())
+  username      String      @unique
+  password_hash String
+  directories   Directory[]
+  files         File[]
+}
+
 model Directory {
   id                String      @id @default(uuid())
   name              String      @db.VarChar(255)
@@ -32,14 +40,6 @@ model File {
   directoryId String
   owner       User      @relation(fields: [ownerId], references: [id])
   ownerId     Int
-}
-
-model User {
-  id            Int         @id @default(autoincrement())
-  username      String
-  password_hash String
-  directories   Directory[]
-  files         File[]
 }
 
 model Session {
