@@ -24,4 +24,29 @@ const createDirectory = async (name, parentId, ownerId) => {
   return newDir;
 };
 
-module.exports = { getDirectoryById, createDirectory };
+const updateDirectoryName = async (id, name) => {
+  const updatedDir = await prisma.directory.update({
+    where: {
+      id: id,
+    },
+    data: {
+      name: name,
+    },
+  });
+  return updatedDir;
+};
+
+const deleteDirectoryById = async (id) => {
+  await prisma.directory.delete({
+    where: {
+      id: id,
+    },
+  });
+};
+
+module.exports = {
+  getDirectoryById,
+  createDirectory,
+  updateDirectoryName,
+  deleteDirectoryById,
+};
