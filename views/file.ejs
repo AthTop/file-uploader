@@ -1,10 +1,13 @@
-<div class="file-container">
-  <p><%= locals.file.name %></p>
+<%- include("partials/header") %>
+
+<div class="file container">
+  <a href="/directory/<%= locals.file.directoryId %>" class="link-button">↑</a>
+  <p>📄 <%= locals.file.name %></p>
   <p><%= locals.file.type.split("/").pop() %></p>
   <p><%= (locals.file.size/1000000).toFixed(2) %>Mb</p>
-  <a href="/file/<%= locals.file.id %>/delete">Delete</a>
+  <a href="/file/<%= locals.file.id %>/delete" class="link-button">Delete</a>
   <button id="changeFileNameBtn" data-fileid="<%= locals.file.id %>" data-filename="<%= locals.file.name %>">Edit</button>
-  <a href="/download/<%= locals.file.id %>" target="_blank">Download</a>
+  <a href="/download/<%= locals.file.id %>" target="_blank" class="link-button">Download</a>
 </div>
 
 <script type="module" src="/file.js"></script>

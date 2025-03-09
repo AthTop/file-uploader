@@ -1,28 +1,32 @@
 <%- include("partials/header") %>
 
 <%- include("partials/newDirDialog") %>
-<div class="directory-container">
-  <% if (locals.directory) { %>
-  <% if (locals.directory.parentDirectoryId) {%>
-  <a href="/directory/<%= locals.directory.parentDirectoryId %>">Up</a>
-  <% } %>
-  <button id="newDirBtn">New Folder</button>
-  <a href="/upload/<%= directory.id %>">Upload file</a>
-  <p>:// <%= locals.directory.name %></p>
-  <p>Owner: <%= locals.currentUser.username %></p>
-  <% locals.directory.subDirectories.forEach(dir => { %>
+<div class="app container">
+  <div class="controls container"> <% if (locals.directory) { %>
+    <p>📁 <%= locals.directory.name %></p>
+    <p>Owner: <%= locals.currentUser.username %></p>
+    <% if (locals.directory.parentDirectoryId) {%>
+    <a href="/directory/<%= locals.directory.parentDirectoryId %>" class="link-button">↑</a>
+    <% } %>
+    <button id="newDirBtn">📁 New</button>
+    <a href="/upload/<%= directory.id %>" class="link-button">Upload file</a>
+    <%}%>
+  </div>
   <div>
-    <a href="/directory/<%= dir.id %>"><%= dir.name %></a>
-    <button id="changeDirNameBtn" data-dirid="<%= dir.id %>" data-dirname="<%= dir.name %>">Edit</button>
-    <a href="/directory/<%= dir.id %>/delete">Delete</a>
+  <% locals.directory.subDirectories.forEach(dir => { %>
+    <div class="directory container">
+      <a href="/directory/<%= dir.id %>">📁 <%= dir.name %></a>
+      <div>
+        <button id="changeDirNameBtn" data-dirid="<%= dir.id %>" data-dirname="<%= dir.name %>">Edit</button>
+        <a href="/directory/<%= dir.id %>/delete" class="link-button">Delete</a>
+      </div>
+    </div>
+    <%})%>
   </div>
-  <%})%>
   <% locals.directory.files.forEach(file => { %>
-  <div class="file-container">
-    <a href="/file/<%= file.id %>"><%= file.name %></a>
+  <div class="file container">
+    <a href="/file/<%= file.id %>">📄 <%= file.name %></a>
   </div>
   <%})%>
-  <%}%>
 </div>
-
 <script type="module" src="/directory.js"></script>

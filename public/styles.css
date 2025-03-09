@@ -1,0 +1,123 @@
+:root {
+    --bg: #f8f9fa;      
+    --border: #dee2e6;   
+    --text: #212529;
+    --light-text: #fff;    
+    --accent: #007bff;   
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "roboto", serif;
+}
+
+body {
+    color: var(--text);
+    background-color: var(--bg);
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: var(--accent);
+    color: var(--light-text);
+}
+
+.nav a {
+    color: var(--light-text);
+}
+
+.nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.app {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    gap: 0.5rem;
+}
+
+.controls {
+    gap: 2rem;
+}
+
+.directory {
+    gap: 2rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.file {
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+button, .link-button {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.3rem 1rem;
+    background-color: var(--accent);
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover, .link-button:hover {
+    cursor: pointer;
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+dialog {
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+dialog::backdrop {
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+input {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.5rem;
+}

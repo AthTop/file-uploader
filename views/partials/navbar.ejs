@@ -1,21 +1,23 @@
 <div class="nav">
   <a href="/" class="logo"><%= locals.siteTitle %></a>
+  <a href="/">
+    <li>Home</li>
+  </a>
   <ul>
-    <a href="/">
-      <li>Home</li>
-    </a>
     <% if(!locals.currentUser) { %>
     <a href="/register">
       <li>Register</li>
     </a>
     <% } %>
-  </ul>
-  <ul>
     <% if(!locals.currentUser) { %>
-    <a href="/login">Login</a>
+    <a href="/login">
+      <li>Login</li>
+    </a>
     <% } else { %>
     <p>Hi, <%= locals.currentUser.username %>!</p>
-    <a href="/logout">Logout</a>
+    <a href="/logout">
+      <li>Logout</li>
+    </a>
     <% } %>
   </ul>
 </div>

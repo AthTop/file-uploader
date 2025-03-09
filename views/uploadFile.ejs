@@ -1,7 +1,9 @@
 <%- include("partials/header") %>
 
-<form action="/upload/<%= locals.directoryId %>" method="POST" enctype="multipart/form-data">
-  <label for="uploaded_file">File to upload: </label>
-  <input type="file" name="uploaded_file" id="uploaded_file">
-  <button type="submit">Upload</button>
-</form>
+<div class="form container">
+  <form action="/upload/<%= locals.directoryId %>" method="POST" enctype="multipart/form-data">
+    <label for="uploaded_file">File to upload: </label>
+    <input type="file" name="uploaded_file" id="uploaded_file">
+    <button type="submit">Upload</button>
+  </form>
+</div>
