@@ -1,0 +1,10 @@
+<div class="file-container">
+  <p><%= locals.file.name %></p>
+  <p><%= locals.file.type.split("/").pop() %></p>
+  <p><%= (locals.file.size/1000000).toFixed(2) %>Mb</p>
+  <a href="/file/<%= file.id %>/delete">Delete</a>
+  <button id="changeFileNameBtn" data-fileid="<%= locals.file.id %>" data-filename="<%= locals.file.name %>">Edit</button>
+  <a href="<%= locals.file.location %>">Download</a>
+</div>
+
+<script type="module" src="/file.js"></script>

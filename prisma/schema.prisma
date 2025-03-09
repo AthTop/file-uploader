@@ -40,6 +40,9 @@ model File {
   directoryId String
   owner       User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   ownerId     Int
+  size        Int
+  type        String
+  publicId    String
 }
 
 model Session {

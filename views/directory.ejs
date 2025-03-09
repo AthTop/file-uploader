@@ -7,6 +7,7 @@
   <a href="/directory/<%= locals.directory.parentDirectoryId %>">Up</a>
   <% } %>
   <button id="newDirBtn">New Folder</button>
+  <a href="/upload/<%= directory.id %>">Upload file</a>
   <p>:// <%= locals.directory.name %></p>
   <p>Owner: <%= locals.currentUser.username %></p>
   <% locals.directory.subDirectories.forEach(dir => { %>
@@ -17,50 +18,11 @@
   </div>
   <%})%>
   <% locals.directory.files.forEach(file => { %>
-  <p><%= file.name %></p>
+  <div class="file-container">
+    <a href="/file/<%= file.id %>"><%= file.name %></a>
+  </div>
   <%})%>
   <%}%>
 </div>
 
-
-<script>
-  // TODO move to separate JS file
-    const newDirBtn = document.querySelector("#newDirBtn");
-    const newDirDialog = document.querySelector("#newDirDialog");
-    const changeDirNameBtns = document.querySelectorAll("#changeDirNameBtn");
-    newDirBtn.addEventListener("click", (e) => {
-        newDirDialog.showModal();
-    })
-    changeDirNameBtns.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        const dirId = btn.dataset.dirid;
-        const dirName = btn.dataset.dirname;
-        const dialog = updateNameDialog(dirId, dirName);
-        dialog.showModal();
-      })
-    })
-
-    // Generate dialog dynamically to edit Directory name
-    const updateNameDialog = (dirId, dirName) => {
-      const dialog = document.createElement('dialog');
-      dialog.classList.add("changeDirNameDialog");
-      const form = document.createElement("form");
-      form.method = "POST";
-      form.action = `/directory/${dirId}/update`;
-      const label = document.createElement('label');
-      label.htmlFor = "changeDirName";
-      label.textContent = "Name: ";
-      const input = document.createElement("input");
-      input.type = "text";
-      input.name = "name";
-      input.id = "changeDirName";
-      input.value = dirName;
-      const button = document.createElement("button");
-      button.type = "submit";
-      button.textContent = "Change";
-      form.append(label, input, button);
-      dialog.append(form);
-      document.body.appendChild(dialog);
-      return dialog;
-    }
-</script>
+<script type="module" src="/directory.js"></script>
