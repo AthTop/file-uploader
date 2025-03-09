@@ -11,6 +11,7 @@ const logoutRoute = require("./routes/logout");
 const uploadRoute = require("./routes/upload");
 const directoryRoute = require("./routes/directory");
 const fileRoute = require("./routes/file");
+const downloadRoute = require("./routes/download");
 
 const app = express();
 
@@ -52,6 +53,7 @@ app.use("/logout", logoutRoute);
 app.use("/upload", uploadRoute);
 app.use("/directory", directoryRoute);
 app.use("/file", fileRoute);
+app.use("/download", downloadRoute);
 app.use("/", indexRoute);
 
 const PORT = process.env.PORT || 3000;
