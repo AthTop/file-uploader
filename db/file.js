@@ -43,11 +43,12 @@ const updateFileName = async (name, id) => {
 };
 
 const deleteFileById = async (id) => {
-  await prisma.file.delete({
+  const file = await prisma.file.delete({
     where: {
       id: id,
     },
   });
+  return file;
 };
 
 module.exports = {

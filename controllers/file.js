@@ -1,6 +1,7 @@
 const db = require("../db");
 const { file } = require("../db/prisma");
 const { isAuth } = require("../routes/authMiddleware");
+const { destroyHandler } = require("../lib/cloudinary");
 
 exports.get = [
   isAuth,
@@ -36,7 +37,8 @@ exports.deleteGet = [
   async (req, res, next) => {
     const fileId = req.params.id;
     try {
-      await db.deleteFileById(fileId);
+      const file = await db.deleteFileById(fileId);
+      await destroyHandler(file.publicId);
       res.redirect(`/directory/${req.session.currentDirectory.id}`);
     } catch (err) {
       return next(err);
