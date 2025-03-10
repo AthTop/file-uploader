@@ -5,7 +5,7 @@ A file uploading web application. Built as practice on the Prisma ORM, inspired 
 * User registration and log-in
 * Folder and file CRUD operations
 * File uploading
-* Public file sharing
+* Public file sharing (Limited to current directory, can't access sub directories)
 
 ## Technologies used
 * Node.js / Express.js
