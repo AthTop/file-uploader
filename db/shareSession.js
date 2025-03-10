@@ -1,4 +1,5 @@
 const prisma = require("./prisma");
+const cron = require("node-cron");
 
 const createShare = async (directory, expires) => {
   const share = await prisma.shareSession.create({
@@ -29,5 +30,15 @@ const getShareById = async (id) => {
   });
   return share;
 };
+
+cron.schedule("0 0 * * *", async () => {
+  await prisma.shareSession.deleteMany({
+    where: {
+      expiresAt: {
+        lt: new Date(),
+      },
+    },
+  });
+});
 
 module.exports = { createShare, getShareById };

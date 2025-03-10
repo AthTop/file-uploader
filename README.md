@@ -1,5 +1,5 @@
 # file-uploader
-A file uploading web application. Built as practice on the Prisma ORM, inspired by The Odin Project curriculum, using Node.js, Express and PostgreSQL.
+A file uploading web application. Built as practice on the Prisma ORM, inspired by The Odin Project curriculum, using Node.js, Express and PostgreSQL. Relies on Node-Cron package to delete expired shared directories.
 
 ## Features
 * User registration and log-in
@@ -14,3 +14,4 @@ A file uploading web application. Built as practice on the Prisma ORM, inspired 
 * Passport
 * bcrypt
 * Prisma ORM
+* Node-Cron
