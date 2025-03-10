@@ -12,6 +12,7 @@ const uploadRoute = require("./routes/upload");
 const directoryRoute = require("./routes/directory");
 const fileRoute = require("./routes/file");
 const downloadRoute = require("./routes/download");
+const shareRoute = require("./routes/share");
 
 const app = express();
 
@@ -54,6 +55,7 @@ app.use("/upload", uploadRoute);
 app.use("/directory", directoryRoute);
 app.use("/file", fileRoute);
 app.use("/download", downloadRoute);
+app.use("/share", shareRoute);
 app.use("/", indexRoute);
 
 const PORT = process.env.PORT || 3000;

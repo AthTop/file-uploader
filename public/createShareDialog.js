@@ -1,0 +1,21 @@
+export const createShareDialog = () => {
+  const dialog = document.createElement("dialog");
+  dialog.classList.add("createShareDialog");
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = `/share`;
+  const label = document.createElement("label");
+  label.htmlFor = "expires";
+  label.textContent = "Duration(In hours): ";
+  const input = document.createElement("input");
+  input.type = "number";
+  input.name = "expires";
+  input.id = "expires";
+  const button = document.createElement("button");
+  button.type = "submit";
+  button.textContent = "Share";
+  form.append(label, input, button);
+  dialog.append(form);
+  document.body.appendChild(dialog);
+  return dialog;
+};

@@ -1,0 +1,24 @@
+<%- include("partials/header") %>
+
+<div class="app container">
+  <div class="controls container">
+    <% if (locals.directory) { %>
+    <p>📁 <%= locals.directory.name %></p>
+    <%}%>
+    </div>
+    <div>
+    <% locals.directory.subDirectories.forEach(dir => { %>
+    <div class="directory container">
+      <p>📁 <%= dir.name %></p>
+    </div>
+    <%})%>
+  </div>
+  <% locals.directory.files.forEach(file => { %>
+  <div class="file container">
+    <p>📄 <%= file.name %></p>
+    <p><%= file.type.split("/").pop() %></p>
+    <p><%= (file.size/1000000).toFixed(2) %>Mb</p>
+    <a href="/share/<%= locals.share.id %>/download/<%= file.id %>" target="_blank" class="link-button">Download</a>
+  </div>
+  <%})%>
+</div>
